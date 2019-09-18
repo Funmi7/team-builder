@@ -2,6 +2,27 @@ import React, {useState} from 'react';
 import './App.css';
 import uuid from 'uuid';
 import Form from './Form';
+import styled from 'styled-components';
+
+
+const TeamMembersContainerStyle = styled.div`
+   background-color: rgb(184, 217, 245);
+   width: 50%;
+   margin: 0 auto;
+   margin-bottom: 30px;
+`;
+
+const TeamMemberStyle = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  color: black;
+
+  h5 {
+    margin-right: 5px;
+  }
+`;
+
 
 const initialTeam = [
   {id: uuid(), name: 'Funmilayo', email: 'talabifunmilayo@gmail.com', role: 'Front End Developer'}
@@ -66,14 +87,20 @@ setTeamForm(initialTeamForm);
       />
       {
         teamMembers.map(team => (
-          <div key={team.id}>
-          <h5>Name:</h5>
-          <p>{team.name}</p>
-          <h5>Email:</h5>
-          <p>{team.email}</p>
-          <h5>Role</h5>
-          <p>{team.role}</p>
-          </div>
+          <TeamMembersContainerStyle key={team.id}>
+          <TeamMemberStyle>
+            <h5>Name:</h5>
+            <p>{team.name}</p>
+          </TeamMemberStyle>
+          <TeamMemberStyle>
+            <h5>Email:</h5>
+            <p>{team.email}</p>
+          </TeamMemberStyle>
+          <TeamMemberStyle>
+            <h5>Role</h5>
+            <p>{team.role}</p>
+          </TeamMemberStyle>
+          </TeamMembersContainerStyle>
         ))
       }
     </div>
